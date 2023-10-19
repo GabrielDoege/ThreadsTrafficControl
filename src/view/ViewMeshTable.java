@@ -74,24 +74,16 @@ public class ViewMeshTable extends AbstractTableModel {
     public void newMatrix() {
         Scanner scanner = null;
         try {
-            //Cria uma instancia do arquivo pelo nome
             File meshFile = new File(FILES_DIRECTORY + this.settings.getMeshFileName());
             scanner = new Scanner(meshFile);
-            //Enquanto tiver valores continua lendo
             while (scanner.hasNextInt()) {
-                //Primeira linha é a quantidade de linhas
                 this.setLines(scanner.nextInt());
-                //Segunda linha é a quantidade de colunas
                 this.setColumns(scanner.nextInt());
-                //Cria uma matriz que representa a malha com os tamanhos fornecidos
                 this.mesh = new Road[this.columns][this.lines];
-                //Percorre cada uma das linhas do arquivo
                 for (int line = 0; line < this.lines; line++) {
                     for (int column = 0; column < this.columns; column++) {
-                        //Cada valor inteiro do arquivo representa uma celula da malha e é
-                        //representada por um valor que indica sua direção
                         int direction = scanner.nextInt();
-                        Road road = new Road(column, line, direction);
+                        Road road = new Road(column, line, direction, settings.getMultipleExclusionType());
                         if (road.isRoad()) {
                             road.setEntryOrExit(this);
                         }

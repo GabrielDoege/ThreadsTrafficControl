@@ -6,12 +6,14 @@ public class Settings {
     private final int insertionInteraval;
     private final String meshFileName;
     private final int vehiclesOnMeshQnt;
+    private final int multipleExclusionType;
 
-    public Settings(int vehicesQnt, int insertionInteraval, String meshFileName, int vehiclesOnMeshQnt) {
+    public Settings(int vehicesQnt, int insertionInteraval, String meshFileName, int vehiclesOnMeshQnt, int multipleExclusionType) {
         this.vehicesQnt = vehicesQnt;
         this.insertionInteraval = insertionInteraval;
         this.meshFileName = meshFileName;
         this.vehiclesOnMeshQnt = vehiclesOnMeshQnt;
+        this.multipleExclusionType = multipleExclusionType;
     }
 
     public int getVehicesQnt() {
@@ -28,5 +30,9 @@ public class Settings {
 
     public int getVehiclesOnMeshQnt() {
         return vehiclesOnMeshQnt;
+    }
+
+    public int getMultipleExclusionType() {
+        return multipleExclusionType;
     }
 }

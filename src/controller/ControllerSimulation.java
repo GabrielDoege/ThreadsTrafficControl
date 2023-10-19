@@ -57,11 +57,11 @@ public class ControllerSimulation extends Thread {
     @Override
     public void run() {
         while (!this.ended) {
-            this.runQuery();
+            this.runQueue();
         }
     }
 
-    private void runQuery() {
+    private void runQueue() {
         while (!this.vehiclesOnQueue.isEmpty()) {
             for (int lines = 0; lines < this.getViewSimulation().getTbMalha().getRowCount(); lines++) {
                 for (int columns = 0; columns < this.getViewSimulation().getTbMalha().getColumnCount(); columns++) {

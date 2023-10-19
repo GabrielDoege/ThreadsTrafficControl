@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 
-public class ViewMainMenu extends JFrame{
+public class ViewMainMenu extends JFrame {
     private JPanel jpPainel;
     private JLabel lbConfiguracoes;
     private JTextField tfIntervaloInsercao;
@@ -19,10 +19,13 @@ public class ViewMainMenu extends JFrame{
     private JLabel lbIntervalo;
     private JLabel lbQntTotal;
     private JLabel lbQntSimultanea;
+    private JRadioButton rbSemaforo;
+    private JLabel lbTipoExcluao;
+    private JRadioButton rbMonitor;
 
     public ViewMainMenu() {
         super("Threads Traffic Control");
-        super.setSize(new Dimension(800, 500));
+        super.setSize(new Dimension(800, 600));
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(this.jpPainel);
         this.setLocationRelativeTo(null);
@@ -31,15 +34,16 @@ public class ViewMainMenu extends JFrame{
             new ViewSimulation(new Settings(
                     Integer.parseInt(tfQntTotalVeiculos.getText()),
                     Integer.parseInt(tfIntervaloInsercao.getText()),
-                    this.getMalhaSelecionada(),
-                    Integer.parseInt(this.tfQntVeiculosSimultaneos.getText())
+                    this.getSelectedMesh(),
+                    Integer.parseInt(this.tfQntVeiculosSimultaneos.getText()),
+                    this.getMultipleExclusionType()
             ));
             super.dispose();
         });
         super.setVisible(true);
     }
 
-    public String getMalhaSelecionada() {
+    public String getSelectedMesh() {
         if (this.rbMalha1.isSelected()) {
             return "mesh1.txt";
         }
@@ -50,5 +54,15 @@ public class ViewMainMenu extends JFrame{
             return "mesh3.txt";
         }
         return null;
+    }
+
+    public int getMultipleExclusionType() {
+        if (this.rbSemaforo.isSelected()) {
+            return 1;
+        }
+        if (this.rbMonitor.isSelected()) {
+            return 2;
+        }
+        return 0;
     }
 }

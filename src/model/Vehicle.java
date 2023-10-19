@@ -42,24 +42,17 @@ public class Vehicle extends Thread {
             while (!route.isEmpty()) {
                 int nextRoadIndex = 0;
                 if (route.get(nextRoadIndex).isCrossing()) {
-                    //Se for um cruzamento precisamos saber para que lado ir
                     resolveCrossing();
                 } else {
-                    //Se for s óuma estrada apenas move o veiculo
                     Road road = this.route.remove(nextRoadIndex);
                     this.move(road, true);
                 }
             }
-            //Chegou ao fim do percurso?
-            // - Remove o carro
+
             this.getActualRoad().removeVehicle();
-            // - Libera a estrada
             this.getActualRoad().release();
-            // - Tira da malha pois saiu da tela
             this.controllerSimulation.removeCarOnMesh(this);
-            // - Atualização gráfica
             this.controllerSimulation.updateCell(this.getActualRoad());
-            // - Fim da thread
             this.end();
         }
     }
@@ -69,24 +62,18 @@ public class Vehicle extends Thread {
             boolean reserved = false;
             if (reserve) {
                 do {
-                    //Tenta "reservar/adquirir" a estrada
                     if (nextRoad.tryAcquire()) {
                         reserved = true;
                     }
                 } while (!reserved);
             }
-            //Somente quando conseguiu a estrada, adiciona o carro na posição
             nextRoad.addVehicle(this);
             Road previousRoad = this.getActualRoad();
             if (previousRoad != null) {
-                //Tira o carro da estrada que ele estava
                 previousRoad.removeVehicle();
-                //Libera a estrada
                 previousRoad.release();
             }
-            //Diz em qual estrada o carro está agora
             this.setActualRoad(nextRoad);
-            //Atualização gráfica
             this.controllerSimulation.updateCell(nextRoad);
             this.delay();
         }
@@ -96,9 +83,7 @@ public class Vehicle extends Thread {
         this.delay();
         ArrayList<Road> reservationCrossings = this.loadNecessaryCrossingsForMovement();
         ArrayList<Road> reservedCrossings = this.tryReserveCrossings(reservationCrossings);
-        //Tem todos os cruzamentos para passar?
         if (reservedCrossings.size() == reservationCrossings.size()) {
-            //Move pelo cruzamento
             for (Road reservedCrossing : reservedCrossings) {
                 this.route.remove(reservedCrossing);
                 this.move(reservedCrossing, false);
@@ -120,24 +105,19 @@ public class Vehicle extends Thread {
 
     private void delay() {
         try {
-            //Tempo de espera a cada movimento para definir a velocidade de cada carro
             Thread.sleep(this.speed);
         } catch (InterruptedException e) {
-            //Nada, só encerrou a execução
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     private ArrayList<Road> tryReserveCrossings(ArrayList<Road> reserveCrossings) {
-        //Tenta reservar todos os cruzamentos necessários
         ArrayList<Road> reservedCrossings = new ArrayList<>();
         for (Road crossingTryReserve : reserveCrossings) {
             if (crossingTryReserve.tryAcquire()) {
                 reservedCrossings.add(crossingTryReserve);
             } else {
-                //Não conseguiu reservar todos os cruzamentos para passar?
-                //Vamos liberar os que tinhamos conseguidos reservar
                 this.releaseRoadList(reservedCrossings);
                 break;
             }
@@ -155,7 +135,6 @@ public class Vehicle extends Thread {
         boolean exitFound = false;
         Road nextRoad = entry;
         route.add(nextRoad);
-        //Controla os cruzamentos encontrados para não ocorrer de andar em circulos
         int foundedCrossings = 0;
         while (!exitFound) {
             int direction = nextRoad.getType();

@@ -61,8 +61,7 @@ public class ViewSimulation extends JFrame{
     }
 
     private void formatView() {
-        super.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        super.setUndecorated(true);
+        super.setSize(new Dimension(800, 800));
         super.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         super.setContentPane(this.jpPainel);
         btnEncerrar.addActionListener((ActionEvent e) -> {
