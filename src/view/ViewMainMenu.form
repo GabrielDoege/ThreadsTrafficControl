@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="view.ViewMainMenu">
+  <grid id="27dc6" binding="jpPainel" layout-manager="GridLayoutManager" row-count="11" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="2" left="5" bottom="5" right="2"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="445"/>
+    </constraints>
+    <properties/>
+    <border type="none"/>
+    <children>
+      <component id="b881e" class="javax.swing.JLabel" binding="lbConfiguracoes">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="20"/>
+          <text value="Configurações:"/>
+        </properties>
+      </component>
+      <component id="499d2" class="javax.swing.JLabel" binding="lbIntervalo">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Intervalo Inserção Veículos (s):"/>
+        </properties>
+      </component>
+      <component id="27273" class="javax.swing.JTextField" binding="tfIntervaloInsercao">
+        <constraints>
+          <grid row="2" column="0" row-span="8" col-span="2" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="4940" class="javax.swing.JLabel" binding="lbQntTotal">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Quantidade total veículos:"/>
+        </properties>
+      </component>
+      <component id="5497c" class="javax.swing.JTextField" binding="tfQntTotalVeiculos">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="99d5b" class="javax.swing.JLabel" binding="lbQntSimultanea">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="9" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Quantidade veículos simultâneos:"/>
+        </properties>
+      </component>
+      <component id="eb4fb" class="javax.swing.JTextField" binding="tfQntVeiculosSimultaneos">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties/>
+      </component>
+      <component id="f9064" class="javax.swing.JRadioButton" binding="rbMalha1">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Malha 1"/>
+        </properties>
+      </component>
+      <component id="cd180" class="javax.swing.JRadioButton" binding="rbMalha2">
+        <constraints>
+          <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Malha 2"/>
+        </properties>
+      </component>
+      <component id="b30c9" class="javax.swing.JRadioButton" binding="rbMalha3">
+        <constraints>
+          <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <text value="Malha 3"/>
+        </properties>
+      </component>
+      <component id="2f6ae" class="javax.swing.JButton" binding="btnIniciar">
+        <constraints>
+          <grid row="10" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <font size="18"/>
+          <text value="Iniciar"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+  <buttonGroups>
+    <group name="rbGroup">
+      <member id="f9064"/>
+      <member id="cd180"/>
+      <member id="b30c9"/>
+    </group>
+  </buttonGroups>
+</form>
